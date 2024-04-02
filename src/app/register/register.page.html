@@ -1,0 +1,32 @@
+<ion-header [translucent]="true">
+    <ion-toolbar>
+      <ion-title>
+        Datos del usuario
+      </ion-title>
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-content [fullscreen]="true">
+  
+    <form [formGroup]="formRegister" method="post" class="w-1/2 justify-center items-center">
+      <ion-item>
+        <ion-label position="floating">Nombre</ion-label>
+        <ion-input formControlName="newName"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Contraseña</ion-label>
+        <ion-input formControlName="newPassword" type="password"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Email</ion-label>
+        <ion-input formControlName="newEmail"></ion-input>
+      </ion-item>
+    </form>
+
+    <ion-button (click)="registerUser()">
+      Registrar
+    </ion-button>
+
+
+  </ion-content>
+  

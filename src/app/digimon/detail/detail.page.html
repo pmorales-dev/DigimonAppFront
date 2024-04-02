@@ -1,0 +1,57 @@
+
+
+<ion-toolbar>
+  <ion-buttons slot="start">
+    <ion-button color="medium" (click)="cancel()">Cancel</ion-button>
+  </ion-buttons>
+</ion-toolbar>
+<ion-content [fullscreen]="true" *ngIf="details">
+
+  <ion-header collapse="condense">
+  </ion-header>
+  <!-- section title -->
+  <section class="text-center">
+    <span> {{details.id}}</span>
+    <h1 class="text-black text-lg underline underline-offset-4 font-bold">{{details.name}}</h1>
+  </section>
+  <!-- img DIGIMON -->
+  <section class="justify-center items-center flex" *ngFor="let detail of details.images">
+    <img src="{{detail.href}}" onerror="this.onerror=null; this.src='/assets/icon/Image_not_available.png';" alt="" width="300px" height="300px" style="max-width: 300px; max-height: 300px;">
+  </section>
+      <!-- level attribute and type -->
+   <div class="flex flex-col">
+      <section class="grid grid-cols-3 items-center content-center place-items-center px-5 font-bold">
+        <span>Level </span>
+        <span>Attribute</span>
+        <span>Type</span>
+      </section>
+  
+      <section class="grid grid-cols-3 items-center content-center place-items-center px-5">
+        <section>
+          <div class="flex flex-col" *ngFor="let levels of details.levels">
+            <span class="text-black "> {{levels.level}}</span>
+          </div>
+        </section>
+        <section>
+          <div class="flex flex-col" *ngFor="let attribute of details.attributes">
+            <span class="text-black"> {{attribute.attribute}}</span>
+          </div>
+        </section>
+        <section>
+          <div class="flex flex-col" *ngFor="let type of details.types">
+            <span class="text-black"> {{type.type}}</span>
+          </div>
+        </section>
+      </section>
+   </div>
+<!-- fields -->
+   <div class="flex flex-col justify-center text-center ">
+    <span class="font-bold text-black text-center"> Fields</span>  
+    <section class="flex justify-center items-center flex-wrap gap-5">
+      <div class="flex flex-row gap-5" *ngFor="let field of details.fields">
+        <img src="{{field.image}}" width="100px" height="100px" style="max-width: 50px; max-height: 50px;" onerror="this.onerror=null; this.src='/assets/icon/Image_not_available.png';" alt="">
+      </div>
+    </section>  
+  </div>
+  
+</ion-content>

@@ -1,0 +1,24 @@
+
+<ion-content [fullscreen]="true">
+  <section  *ngIf="paginationInfo"> 
+    <section class="md:grid md:grid-cols-2 lg:grid lg:grid-cols-3 xl:grid xl:grid-cols-5 md:gap-20" *ngIf="(digimonList$ | async) as digimonL">
+        <ng-container class=""*ngFor="let digimon of digimonL | paginate: {itemsPerPage:10,currentPage:p,totalItems:paginationInfo.totalElements}">
+          <div class="hover:cursor-pointer items-center flex flex-col justify-center text-center" (click)="showDetailsDigimon(digimon.id)">
+            <img src="{{digimon.image}}" onerror="this.onerror=null; this.src='/assets/icon/Image_not_available.png';" width="300px" height="300px" style="object-fit: contain; max-width: 300px; max-height: 300px;">
+            <span># {{digimon.id}} </span>
+            <span class="font-bold text-blue-700">{{digimon.name}} </span>
+          </div>
+        </ng-container>
+        <section class="w-full flex items-center justify-center">
+          <pagination-controls (pageChange)="onPageChange(p=$event)"></pagination-controls>
+        </section>
+    </section>
+  </section>
+
+  <ion-accordion-group >
+    <ion-accordion>
+      <ion-list slot="content">
+      </ion-list>
+    </ion-accordion>
+  </ion-accordion-group>
+</ion-content>
